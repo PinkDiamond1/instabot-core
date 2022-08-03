@@ -40,7 +40,7 @@
     "dotenv": "^16.0.0",
     "pensador-promise": "^0.3.0",
     "puppeteer": "^15.0.0",
-    "puppeteer-core": "^15.0.0",
+    "puppeteer-core": "^16.0.0",
     "undici": "^5.5.1"
   },
   "devDependencies": {
