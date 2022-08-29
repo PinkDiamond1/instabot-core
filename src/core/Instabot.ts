@@ -39,8 +39,6 @@ export class Instabot {
 
       await page.goto(args.link);
 
-      // await this.verifyRedirect(args);
-
       const quaint = randomInt(5, 10100);
       for (let i = 0; i < quaint; i++) {
         const randEmoji = randomInt(0, 7);
