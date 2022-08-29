@@ -34,18 +34,24 @@
   },
   "homepage": "https://github.com/hebertcisco/instabot-core#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "beautlog": "^0.4.4",
     "chrome-launcher": "^0.15.0",
     "chromium": "^3.0.2",
+    "date-handle": "^0.0.3",
     "dotenv": "^16.0.0",
-    "pensador-promise": "^0.3.0",
+    "emoji-library": "^0.0.2",
+    "pensador-promise": "^0.3.2",
     "puppeteer": "^16.0.0",
     "puppeteer-core": "^16.0.0",
-    "undici": "^5.5.1"
+    "undici": "^5.5.1",
+    "winston": "^3.8.1"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/dotenv": "8.2.0",
     "@types/jest": "27.5.2",
+    "@types/node": "^18.7.13",
     "@types/puppeteer": "5.4.6",
     "@types/puppeteer-core": "5.4.0",
     "@typescript-eslint/eslint-plugin": "5.34.0",

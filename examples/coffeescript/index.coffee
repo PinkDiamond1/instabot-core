@@ -1,4 +1,8 @@
-import { commentService } from 'instabot-core';
+#!/usr/bin/env node
+import { commentService } from '../../lib'
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 commentService({
         link: process.env.IG_LINK,

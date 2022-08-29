@@ -1,11 +1,13 @@
-import { commentService } from 'instabot-core';
-import * as dotenv from 'dotenv';
+#!/usr/bin/env node
+import * as instabot from 'instabot-core';
+import dotenv from 'dotenv';
 
 dotenv.config();
+const { commentService } = instabot;
 
 const { IG_LINK, PHRASE_AUTHOR, IG_USERNAME, IG_PASSWORD } = process.env;
 
-function* commentForever() {
+async function* commentForever() {
   yield commentService({
     link: IG_LINK,
     author: PHRASE_AUTHOR,
@@ -14,4 +16,6 @@ function* commentForever() {
   });
 }
 
-commentForever().next();
+(async () => {
+  await commentForever().next();
+})();

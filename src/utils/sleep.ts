@@ -6,3 +6,4 @@ export async function sleep(ms: number | undefined) {
     return false;
   }
 }
+export default sleep;

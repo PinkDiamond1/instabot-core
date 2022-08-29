@@ -1,4 +1,6 @@
-const { commentService } = require('instabot-core');
+#!/usr/bin/env node
+const { commentService } = require('../../lib/index.js');
+require('dotenv').config();
 
 const { IG_LINK, PHRASE_AUTHOR, IG_USERNAME, IG_PASSWORD } = process.env;
 

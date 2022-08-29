@@ -1,4 +1,2 @@
-import { randomInt } from './randomInt';
-import { sleep } from './sleep';
-
-export { randomInt, sleep };
+export * from './randomInt';
+export * from './sleep';
