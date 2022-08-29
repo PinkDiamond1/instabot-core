@@ -1,16 +1,22 @@
 {
-  "name": "mjs",
+  "name": "instabot-mjs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.mjs",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "dev": "nodemon index.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "instabot-core": "^1.0.5"
+    "dotenv": "^16.0.1",
+    "instabot-core": "^1.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

@@ -1,24 +1,16 @@
-import Console from 'beautlog';
-import { request } from 'undici';
+import { Logger } from '../utils/logger';
+import { EmojiService } from 'emoji-library';
 
-type EmojiList = {
-  symbol: string;
-};
+const emojiService = new EmojiService();
+
 export async function getEmoji(rand: number): Promise<string> {
+  const logger = new Logger(getEmoji.name);
   const random = rand || 0;
-  try {
-    const response = await request('https://emojiserver.vercel.app');
-    const { statusCode } = response;
-    void statusCode;
-    const body: EmojiList[] = await response.body.json();
-    const data = body.map((emoji: EmojiList) => {
-      return emoji.symbol.toString();
-    });
-    return data[random];
-  } catch (error) {
-    Console.error(error);
-    throw error;
-  }
+  const emojiList = emojiService.getEmojiListByKeyword('love');
+  logger.info(`get emoji by random ${random}`);
+  const emoji = emojiList[random];
+  logger.info(`get emoji ${emoji.symbol}`);
+  return emoji.symbol;
 }
 
 export default getEmoji;

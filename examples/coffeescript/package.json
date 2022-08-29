@@ -1,5 +1,5 @@
 {
-  "name": "coffeescript",
+  "name": "instabot-coffeescript",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -19,7 +19,7 @@
     "coffeescript": "^2.6.1"
   },
   "dependencies": {
-    "instabot-core": "^1.0.7",
+    "dotenv": "^16.0.1",
     "rimraf": "^3.0.2"
   }
 }

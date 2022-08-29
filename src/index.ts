@@ -1,17 +1,14 @@
-import { commentService } from './core/comment.service';
-import { getEmoji } from './services/getEmoji';
-import { randomInt, sleep } from './utils';
+export * from './core';
+export * from './services';
+export * from './utils';
 
-export { commentService } from './core/comment.service';
-export * as comment from './core/comment.service';
-export * as core from './core/comment.service';
-export { getEmoji } from './services/getEmoji';
-export { randomInt, sleep } from './utils';
+import * as core from './core';
+import * as services from './services';
+import * as utils from './utils';
 
-const instabot = {
-  comment: commentService,
-  getEmoji: getEmoji,
-  randomInt: randomInt,
-  sleep: sleep,
+export const instabot = {
+  ...core,
+  ...services,
+  ...utils,
 };
 export default instabot;
