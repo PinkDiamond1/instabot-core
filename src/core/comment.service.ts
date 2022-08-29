@@ -14,7 +14,7 @@ export const commentService = async (args: TypeCommentArgs): Promise<void> => {
   try {
     await instabot.comment({ link, author });
   } catch (err) {
-    logger.error(err);
+    logger.error(JSON.stringify(err));
   }
 };
 export default commentService;

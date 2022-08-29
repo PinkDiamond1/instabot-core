@@ -98,7 +98,7 @@ export class Instabot {
 
       return Promise.resolve();
     } catch (error) {
-      this.logger.error(error);
+      this.logger.error(JSON.stringify(error));
       throw error;
     }
   }
