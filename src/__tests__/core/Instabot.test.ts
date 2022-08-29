@@ -20,7 +20,7 @@ describe('Instabot', () => {
     args = commentMock.argsMock;
     instabot = new InstabotMock({
       loginInstagram: loginInstagram,
-      passwordInstagram: passwordInstagram
+      passwordInstagram: passwordInstagram,
     });
   });
   test('should comment toBeUndefined', async () => {
