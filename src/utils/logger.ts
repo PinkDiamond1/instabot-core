@@ -1,5 +1,5 @@
 import Console from 'beautlog';
-import { date } from 'date-handle';
+import moment from 'moment';
 
 export class Logger {
   constructor(private context?: string) {}
@@ -16,7 +16,7 @@ export class Logger {
     return Console.error(this.handleWithContext(value));
   }
   private handleWithContext(value: string) {
-    return `${this.context || Logger.name}: ${value}... ${date.nowFully}`;
+    return `${this.context || Logger.name}: ${value}... ${moment().format('YYYY-MM-DD HH:mm:ss')}`;
   }
 }
 export default new Logger();
