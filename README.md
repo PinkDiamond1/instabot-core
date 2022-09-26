@@ -44,6 +44,8 @@
 
 # Getting started
 
+[![Node.js build and publish package](https://github.com/hebertcisco/instabot-core/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/hebertcisco/instabot-core/actions/workflows/npm-publish.yml)
+
 ## Usage
 
 # Installation
