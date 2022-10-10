@@ -127,8 +127,8 @@ export class Instabot {
     await page.type("input[name='password']", this.instabotConfig.passwordInstagram, { delay: 434 });
     await page.click("button[type='submit']");
     this.logger.info('Logging in');
-    await page.waitForSelector('section.ABCxa');
-    await page.click('button.sqdOP');
+    await page.waitForSelector('section._aa55');
+    await page.click('button._acan');
     this.logger.info('Logged in');
     await page.waitForSelector("textarea[aria-label='Adicione um comentário...']");
     return Promise.resolve(page);
