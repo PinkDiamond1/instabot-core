@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { commentService } from '../../lib'
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
 
 dotenv.config();
 
