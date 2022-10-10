@@ -114,8 +114,6 @@ Or buy me a coffee 🙌🏾
 
 BTC WALLET: 3P4oVEdSP8CPdFZZwS2dboRyLFXLSTE7Gq
 
-
-
 ## 📝 License
 
 Copyright © 2022 [Hebert F Barros](https://github.com/hebertcisco).<br />
