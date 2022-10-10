@@ -16,7 +16,7 @@
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "start": "node example/index.js",
+    "start": "node node.js",
     "prestart": "npm run build"
   },
   "repository": {
@@ -43,8 +43,6 @@
     "puppeteer": "^18.0.0"
   },
   "devDependencies": {
-    "@types/axios": "0.14.0",
-    "@types/dotenv": "8.2.0",
     "@types/jest": "29.1.2",
     "@types/node": "18.7.14",
     "@types/puppeteer": "5.4.6",
