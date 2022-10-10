@@ -16,7 +16,7 @@
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "start": "node example/index.js",
+    "start": "node node.js",
     "prestart": "npm run build"
   },
   "repository": {
