@@ -40,7 +40,7 @@
     "emoji-library": "^0.0.3",
     "moment": "^2.29.4",
     "pensador-promise": "^0.3.2",
-    "puppeteer": "^18.0.0"
+    "puppeteer": "^19.0.0"
   },
   "devDependencies": {
     "@types/jest": "29.1.2",
