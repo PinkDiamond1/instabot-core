@@ -36,20 +36,7 @@ export class Instabot {
   public get getMode(): ModeEnum {
     return this.mode;
   }
-  private async getPhrase(author: string): Promise<string> {
-    const MAX_PHRASES = 50;
-    const randPhrase = randomInt(0, MAX_PHRASES);
-    let phrase: string;
-    const pensador_phrase = await pensador({
-      term: author || 'Jesus+Cristo',
-      max: MAX_PHRASES,
-    });
-    if (pensador_phrase.total === 0) {
-      const defaultPhrases = default_phrases[randomInt(0, randPhrase)];
-      phrase = defaultPhrases.text;
-    }
-    return `${pensador_phrase.phrases[randomInt(0, randPhrase)].text}`;
-  }
+
   public async comment(args: CommentArgsInterface): Promise<void> {
     const browser_launched = await this.browser();
     try {
@@ -90,6 +77,21 @@ export class Instabot {
       browser_launched.close();
       await sleep(randomInt(3000000, 3120000));
     }
+  }
+  private async getPhrase(author: string): Promise<string> {
+    const MAX_PHRASES = 50;
+    const randPhrase = randomInt(0, MAX_PHRASES);
+    let phrase: string;
+    const pensador_phrase = await pensador({
+      term: author || 'Jesus+Cristo',
+      max: MAX_PHRASES,
+    });
+    if (pensador_phrase.total === 0) {
+      const defaultPhrases = default_phrases[randomInt(0, randPhrase)];
+      phrase = defaultPhrases.text;
+    }
+    phrase = pensador_phrase.phrases[randomInt(0, randPhrase)].text;
+    return phrase;
   }
   private async verifyRedirect(args: CommentArgsInterface): Promise<void> {
     const configuredLink = await this.configureLink({
