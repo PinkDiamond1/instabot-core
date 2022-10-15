@@ -1,24 +1,45 @@
 {
   "name": "instabot-core",
-  "version": "1.1.32",
+  "version": "1.1.33",
   "description": "Instagram comment generator robot",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "test": "jest --config jest.config.js",
+    "test:cov": "npm test -- --coverage",
+    "test:watch": "npm test -- --watch",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "npm test -- --config jest-e2e.json",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.(js|ts)\"",
     "postformat": "prettier --write \"examples/**/*.(js|ts|md|mjs|cjs)\"",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --fix --ext .js,.ts",
-    "test": "jest --config jest.config.js",
     "prepare": "husky install",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "start": "node node.js",
+    "start": "node node.cjs",
     "prestart": "npm run build"
   },
+  "bin": {
+    "instabot": "node.cjs"
+  },
+  "engines": {
+    "node": ">=14.20.1",
+    "npm": ">=6.14.17"
+  },
+  "os": [
+    "!darwin",
+    "linux",
+    "win32"
+  ],
+  "cpu": [
+    "x64",
+    "!arm",
+    "!mips"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hebertcisco/instabot-core.git"
@@ -44,7 +65,7 @@
   },
   "devDependencies": {
     "@types/jest": "29.1.2",
-    "@types/node": "18.7.14",
+    "@types/node": "16.11.7",
     "@types/puppeteer": "5.4.7",
     "@types/puppeteer-core": "5.4.0",
     "@typescript-eslint/eslint-plugin": "5.40.0",
@@ -66,5 +87,11 @@
     "chromium": "^3.0.3",
     "jest": "^28.0.0 || ^29.0.1",
     "puppeteer-core": "^17.0.0 || ^18.0.0 || ^19.0.0"
-  }
+  },
+  "bundledDependencies": [
+    "chrome-launcher",
+    "chromium",
+    "jest",
+    "puppeteer-core"
+  ]
 }

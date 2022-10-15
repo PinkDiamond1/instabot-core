@@ -1,8 +1,13 @@
-import { getEmoji } from '../../index';
+import { EmojiServiceImpl } from '../../index';
 
 describe('getEmoji', () => {
+  let emojiServiceImpl: EmojiServiceImpl;
+
+  beforeAll(() => {
+    emojiServiceImpl = new EmojiServiceImpl();
+  });
   test('should return an emoji', async () => {
-    const emoji = await getEmoji(0);
+    const emoji = await emojiServiceImpl.execute(0);
     expect(emoji).toBeDefined();
-  }, 5000);
+  });
 });

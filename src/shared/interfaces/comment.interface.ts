@@ -1,8 +1,10 @@
 import puppeteer from 'puppeteer';
+import type { PuppeteerLaunchOptions } from 'puppeteer';
 
 export interface InstabotConfigInterface {
   loginInstagram: string;
   passwordInstagram: string;
+  puppeteer_options?: PuppeteerLaunchOptions;
 }
 export interface CommentArgsInterface {
   link: string;

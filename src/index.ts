@@ -1,10 +1,10 @@
 export * from './core';
 export * from './services';
-export * from './utils';
+export * from './shared/helpers';
 
 import * as core from './core';
 import * as services from './services';
-import * as utils from './utils';
+import * as utils from './shared/helpers';
 
 export const instabot = {
   ...core,

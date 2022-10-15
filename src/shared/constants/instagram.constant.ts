@@ -1,4 +1,4 @@
-import { URL } from 'node:url';
+import { URL } from 'url';
 
 export const INSTAGRAM_URL = new URL('https://www.instagram.com');
 export const INSTAGRAM_LOGIN_URL = (next: string) =>

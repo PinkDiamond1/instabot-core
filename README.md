@@ -41,7 +41,6 @@
 
 <p align="center"><strong></strong>✨</p>
 
-
 # Getting started
 
 [![Node.js build and publish package](https://github.com/hebertcisco/instabot-core/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/hebertcisco/instabot-core/actions/workflows/npm-publish.yml)
@@ -55,44 +54,53 @@
 Create an file `index.js`, run `npm init` on the terminal and this is the content of the `index.js`:
 
 ```mjs
-import { commentService } from 'instabot-core';
-import * as dotenv from 'dotenv';
+#!/usr/bin/env node
+import "dotenv/config";
 
-dotenv.config();
+import { CommentService } from 'instabot-core';
 
 const { IG_LINK, PHRASE_AUTHOR, IG_USERNAME, IG_PASSWORD } = process.env;
 
-
+const commentService = new CommentService({
+    loginInstagram: IG_USERNAME,
+    passwordInstagram: IG_PASSWORD,
+    puppeteer_options: {
+        headless: true,
+    },
+});
 function* commentForever() {
-    yield commentService({
+    yield commentService.execute({
         link: IG_LINK,
         author: PHRASE_AUTHOR,
-        loginInstagram: IG_USERNAME,
-        passwordInstagram: IG_PASSWORD,
-      });
+    });
 }
 
 commentForever().next();
 ```
+
 Install the dependency:
 
 ```bash
 npm i instabot-core
 ```
+
 or
+
 ```bash
 yarn add instabot-core
 ```
 
 Now run the command:
+
 ```bash
 node index.js
 ```
 
 ## Cloning the repo
+
 > Clone this repository: `git clone https://github.com/hebertcisco/instabot-core`
 
-### Open the directory and run the script line:
+### Open the directory and run the script line
 
 ```bash
 cd instabot-core && npm i

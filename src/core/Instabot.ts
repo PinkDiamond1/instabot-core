@@ -1,33 +1,54 @@
+import { URL } from 'url';
+import { randomInt } from 'crypto';
 import puppeteer from 'puppeteer';
-
 import pensador from 'pensador-promise';
 import axios from 'axios';
+
 import type { PuppeteerLaunchOptions } from 'puppeteer';
 
-import { randomInt, sleep } from '../utils';
-import { getEmoji } from '../services';
+import { sleep } from '../shared/helpers';
+import { EmojiServiceImpl, CommentService } from '../services';
 
-import { Logger } from '../utils/logger';
+import { Logger } from '../utils/Logger';
 
 import { INSTAGRAM_LOGIN_URL } from '../shared/constants/instagram.constant';
 
-import { ModeEnum } from './enums/Instabot.enum';
-
+import { ModeEnum } from '../shared/enums/Instabot.enum';
+import default_phrases from '../shared/json/default-phrases';
 import type { CommentArgsInterface, InstabotConfigInterface } from '../shared/interfaces/comment.interface';
 import type { ConfigureLinkArgs, ConfigureLinkReturn, LoginArgs, Page } from '../shared/types/comment.type';
 
 export class Instabot {
   private logger: Logger = new Logger(Instabot.name);
+  private emojiServiceImpl: EmojiServiceImpl = new EmojiServiceImpl();
+  private commentService: CommentService;
+
   private mode: ModeEnum = ModeEnum.DEFAULT;
 
   public constructor(private instabotConfig: InstabotConfigInterface) {
     this.logger.info(`Starting`);
+    this.commentService = new CommentService({ ...instabotConfig });
+    this.commentService.execute = this.comment.bind(this);
   }
   public set setMode(mode: ModeEnum) {
     this.mode = mode;
   }
   public get getMode(): ModeEnum {
     return this.mode;
+  }
+  private async getPhrase(author: string): Promise<string> {
+    const MAX_PHRASES = 50;
+    const randPhrase = randomInt(0, MAX_PHRASES);
+    let phrase: string;
+    const pensador_phrase = await pensador({
+      term: author || 'Jesus+Cristo',
+      max: MAX_PHRASES,
+    });
+    if (pensador_phrase.total === 0) {
+      const defaultPhrases = default_phrases[randomInt(0, randPhrase)];
+      phrase = defaultPhrases.text;
+    }
+    return `${pensador_phrase.phrases[randomInt(0, randPhrase)].text}`;
   }
   public async comment(args: CommentArgsInterface): Promise<void> {
     const browser_launched = await this.browser();
@@ -42,15 +63,11 @@ export class Instabot {
       const quaint = randomInt(5, 10100);
       for (let i = 0; i < quaint; i++) {
         const randEmoji = randomInt(0, 7);
-        const emoji = await getEmoji(randEmoji);
+        const emoji = await this.emojiServiceImpl.execute(randEmoji);
         this.logger.info('Waiting');
         await page.waitForTimeout(randomInt(30678, 35678));
-        const phrase = await pensador({
-          term: args.author,
-          max: 50,
-        });
-        const randPhrase = randomInt(0, 50);
-        const comment = `${phrase.phrases[randomInt(0, randPhrase)].text} ${emoji.replace(/['"]+/g, '')}`;
+        const phrase = await this.getPhrase(args.author);
+        const comment = `${phrase} ${emoji.replace(/['"]+/g, '')}`;
         this.logger.info(`Comment: ${comment}, author: ${args.author}`);
         this.logger.info('Commenting');
 

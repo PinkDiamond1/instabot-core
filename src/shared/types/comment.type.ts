@@ -1,5 +1,9 @@
 import puppeteer from 'puppeteer';
-import type { CommentArgsInterface, CommonArgsInterface } from '../interfaces/comment.interface';
+import type {
+  CommentArgsInterface,
+  CommonArgsInterface,
+  InstabotConfigInterface,
+} from '../interfaces/comment.interface';
 
 export type PuppeteerLaunchOptions = puppeteer.PuppeteerLaunchOptions;
 export type Page = puppeteer.Page;
@@ -20,3 +24,12 @@ export type HandleWithModeArgs = {
   loginArgs: LoginArgs;
   args: CommentArgsInterface;
 };
+const TypeOfBrowser = puppeteer.launch;
+export type Browser = typeof TypeOfBrowser;
+
+export type TCommentServiceExecuteArgs = {
+  link: string;
+  author: string;
+};
+export type TCommentServiceArgs = InstabotConfigInterface;
+export type TypeCommentService = (args: TCommentServiceExecuteArgs) => void;

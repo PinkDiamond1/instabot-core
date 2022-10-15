@@ -1,4 +1,4 @@
-import { sleep } from '../../utils';
+import { sleep } from '../../shared/helpers/sleep';
 
 describe('sleep', () => {
   test('sleep Works', async () => {
