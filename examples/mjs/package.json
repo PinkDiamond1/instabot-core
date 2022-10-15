@@ -13,8 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.0.1",
-    "instabot-core": "^1.1.1"
+    "dotenv": "^16.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
