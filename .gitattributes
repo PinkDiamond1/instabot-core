@@ -1,2 +1,4 @@
-static/* linguist-vendored
-examples/* linguist-documentation=false
+examples/** linguist-vendored=false
+*.env.example linguist-detectable=false
+*.md linguist-detectable=false
+*.mdx linguist-detectable=false
