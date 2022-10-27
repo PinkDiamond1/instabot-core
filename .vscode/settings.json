@@ -1,3 +1,7 @@
 {
-  "cSpell.words": ["Instabot"]
+  "cSpell.words": [
+    "Instabot"
+  ],
+  "editor.tabCompletion": "on",
+  "diffEditor.codeLens": true
 }
